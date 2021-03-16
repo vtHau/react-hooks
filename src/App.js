@@ -4,6 +4,7 @@ import TotoList from "./components/TodoList";
 import FormTodo from "./components/FormTodo";
 import PostList from "./components/PostList";
 import Pagination from "./components/Pagination";
+import PostFilters from "./components/PostFilters";
 
 function App() {
   const [person, setPerson] = useState([
@@ -25,6 +26,7 @@ function App() {
   const [filters, setFilters] = useState({
     _limit: 10,
     _page: 1,
+    title_like: "",
   });
 
   function handlePageChange(newPage) {
@@ -65,6 +67,14 @@ function App() {
     setPerson(newPerson);
   };
 
+  function handleFiltersChange(searchValues) {
+    setFilters({
+      ...filters,
+      _page: 1,
+      title_like: searchValues.searchItem,
+    });
+  }
+
   return (
     <div className="container-fluid" style={{ padding: "0" }}>
       <div className="container">
@@ -73,6 +83,7 @@ function App() {
         <FormTodo addItem={addItem} /> */}
         <PostList postList={postList} />
         <Pagination pagination={pagination} onPageChange={handlePageChange} />
+        <PostFilters onSubmit={handleFiltersChange} />
       </div>
     </div>
   );
