@@ -5,6 +5,7 @@ import FormTodo from "./components/FormTodo";
 import PostList from "./components/PostList";
 import Pagination from "./components/Pagination";
 import PostFilters from "./components/PostFilters";
+import Clock from "./components/Clock";
 
 function App() {
   const [person, setPerson] = useState([
@@ -15,6 +16,7 @@ function App() {
     { id: 4, name: "Nguyen Van E" },
   ]);
 
+  const [showClock, setShowClock] = useState(true);
   const [postList, setPostList] = useState([]);
 
   const [pagination, setPagination] = useState({
@@ -75,15 +77,27 @@ function App() {
     });
   }
 
+  function toggleClock() {
+    setShowClock(!showClock);
+  }
+
   return (
     <div className="container-fluid" style={{ padding: "0" }}>
       <div className="container">
         <h2 className="text-center mt-4 mb-5">Hello To React</h2>
         {/* <TotoList person={person} deleteItem={deleteItem} />
         <FormTodo addItem={addItem} /> */}
-        <PostList postList={postList} />
+        {/* <PostList postList={postList} />
         <Pagination pagination={pagination} onPageChange={handlePageChange} />
-        <PostFilters onSubmit={handleFiltersChange} />
+        <PostFilters onSubmit={handleFiltersChange} /> */}
+        {showClock && <Clock />}
+
+        <button
+          onClick={toggleClock}
+          style={{ margin: "0 auto", display: "block" }}
+        >
+          {showClock ? "Hide Clock" : "Show Clock"}
+        </button>
       </div>
     </div>
   );
