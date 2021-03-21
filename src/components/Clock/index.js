@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import reactDom from "react-dom";
+import useClock from "../../hooks/useClock";
 
 function formatTime(date) {
   const hours = `0${date.getHours()}`.slice(-2);
@@ -10,18 +10,20 @@ function formatTime(date) {
 }
 
 function Clock(props) {
-  const [timeClock, setTimeClock] = useState("");
+  // const [timeClock, setTimeClock] = useState("");
 
-  useEffect(() => {
-    const setUpdateTime = setInterval(() => {
-      const time = formatTime(new Date());
-      setTimeClock(time);
-    }, 500);
+  // useEffect(() => {
+  //   const setUpdateTime = setInterval(() => {
+  //     const time = formatTime(new Date());
+  //     setTimeClock(time);
+  //   }, 500);
 
-    return () => {
-      clearInterval(setUpdateTime);
-    };
-  }, []);
+  //   return () => {
+  //     clearInterval(setUpdateTime);
+  //   };
+  // }, []);
+
+  const { timeClock } = useClock();
 
   return (
     <h2 style={{ color: "red", marginBottom: "40px", textAlign: "center" }}>

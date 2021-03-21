@@ -6,6 +6,7 @@ import PostList from "./components/PostList";
 import Pagination from "./components/Pagination";
 import PostFilters from "./components/PostFilters";
 import Clock from "./components/Clock";
+import MagicBox from "./components/MagicBox";
 
 function App() {
   const [person, setPerson] = useState([
@@ -90,14 +91,15 @@ function App() {
         {/* <PostList postList={postList} />
         <Pagination pagination={pagination} onPageChange={handlePageChange} />
         <PostFilters onSubmit={handleFiltersChange} /> */}
-        {showClock && <Clock />}
+        {/* {showClock && <Clock />}
 
         <button
           onClick={toggleClock}
           style={{ margin: "0 auto", display: "block" }}
         >
           {showClock ? "Hide Clock" : "Show Clock"}
-        </button>
+        </button> */}
+        <MagicBox />
       </div>
     </div>
   );
